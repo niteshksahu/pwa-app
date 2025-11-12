@@ -1,0 +1,11 @@
+
+.row {
+  display: flex;
+  overflow-x: auto; /* Horizontal scroll for TV remotes */
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.row::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for clean look */
+}

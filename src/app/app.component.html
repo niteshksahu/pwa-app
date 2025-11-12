@@ -1,0 +1,10 @@
+<div class="netflix-container">
+  <!-- Hero Banner -->
+  <app-hero-banner [item]="featured"></app-hero-banner>
+  
+  <!-- Content Rows -->
+  <div *ngFor="let category of categories" class="row-container">
+    <h2>{{ category }}</h2>
+    <app-content-row [items]="getItemsByCategory(category)"></app-content-row>
+  </div>
+</div>

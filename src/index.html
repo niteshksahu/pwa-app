@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PwaApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="/src/manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/icon-512x512.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+
+  <meta name="description" content="Netflix-like PWA app">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <script>
+document.addEventListener('keydown', function(event) {
+  const focusable = Array.from(document.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])'));
+  const focused = document.activeElement;
+  let index = focusable.indexOf(focused);
+
+  switch (event.key) {
+    case 'ArrowUp':
+      // Move to previous row/item
+      while (index > 0) {
+        index--;
+        if (focusable[index].offsetParent !== null) {  // Visible?
+          focusable[index].focus();
+          break;
+        }
+      }
+      event.preventDefault();
+      break;
+    case 'ArrowDown':
+      // Move to next
+      while (index < focusable.length - 1) {
+        index++;
+        if (focusable[index].offsetParent !== null) {
+          focusable[index].focus();
+          break;
+        }
+      }
+      event.preventDefault();
+      break;
+    case 'ArrowLeft':
+    case 'ArrowRight':
+      // Handle horizontal scrolling in rows
+      const row = focused.closest('.row');  // Assuming .row class on content rows
+      if (row) row.scrollBy(event.key === 'ArrowLeft' ? -150 : 150, 0);  // Scroll thumbnails
+      event.preventDefault();
+      break;
+    case 'Enter':
+      if (focused) focused.click();
+      break;
+    case 'Backspace':
+    case 'Escape':
+      history.back();
+      break;
+  }
+});
+
+// Focus styles toggle for keyboard/remote
+document.addEventListener('keydown', () => document.body.classList.add('using-keyboard'));
+document.addEventListener('mousedown', () => document.body.classList.remove('using-keyboard'));
+</script>
+</body>
+</html>

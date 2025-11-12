@@ -1,0 +1,8 @@
+<div class="hero">
+  <img [src]="item.thumbnail" alt="{{item.title}}" class="hero-image">
+  <div class="hero-content">
+    <h1>{{ item.title }}</h1>
+    <p>{{ item.description }}</p>
+    <a [routerLink]="['/detail', item.id]" class="play-button">Play</a>
+  </div>
+</div>

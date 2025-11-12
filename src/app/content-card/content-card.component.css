@@ -1,0 +1,22 @@
+
+.card {
+  min-width: 150px; /* Thumbnail size */
+  text-decoration: none;
+  color: white;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+.card:focus {
+  outline: 2px solid yellow; /* TV focus highlight */
+  transform: scale(1.05); /* Slight zoom on focus */
+}

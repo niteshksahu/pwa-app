@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+body.using-keyboard :focus {
+  outline: 3px solid yellow !important;  
+  transform: scale(1.1);  
+}
+
+.row {  
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;  
+}
+
+.card, a, button {  
+  tab-size: 0;  
+  font-size: 1.5rem;  
+  padding: 20px; 
+}
+
+@media (min-width: 1920px) {  
+  body { font-size: 1.2em; }
+  .hero { height: 60vh; }
+}
