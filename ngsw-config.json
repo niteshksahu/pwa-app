@@ -16,6 +16,5 @@
         "files": ["/assets/**", "/*.(png|jpg|jpeg|svg|webp|gif)"]  
       }
     }
-  ],
-  "dataGroups": [] 
+  ]
 }

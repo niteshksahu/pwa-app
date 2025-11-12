@@ -5,7 +5,7 @@
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "orientation": "landscape", 
-  "description": "A Netflix-like streaming app built as a PWA for movies and shows.",
+  "description": "A Netflix-like streaming app built as a PWA for movies and shows",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
