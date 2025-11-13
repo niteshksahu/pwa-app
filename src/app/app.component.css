@@ -1,16 +1,15 @@
-
-.netflix-container {
-  background-color: #141414;
-  color: white;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+body.using-keyboard :focus {
+  outline: 4px solid yellow !important;
+  transform: scale(1.1);
 }
-
-.row-container {
-  margin-bottom: 20px;
+/* .card, a, button {
+  tabindex: 0;
+} */
+.row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
-
-h2 {
-  font-size: 24px; /* Larger for TV */
-  margin: 10px 0;
+@media (min-width: 1920px) { /* TV screens */
+  * { font-size: 1.5rem; padding: 20px; }
 }

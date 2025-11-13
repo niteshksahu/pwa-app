@@ -62,14 +62,14 @@
   "screenshots": [  
     {
       "src": "./assets/icons/Screenshot.png",  
-      "sizes": "1280x720",
+      "sizes": "1280x1080",
       "type": "image/png",
       "form_factor": "wide",  
       "label": "Home screen with content rows"
     },
     {
       "src": "./assets/icons/Screenshot-Details.png",
-      "sizes": "1280x720",
+      "sizes": "1280x1080",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Detail page for a movie"

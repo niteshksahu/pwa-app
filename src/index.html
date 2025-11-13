@@ -24,42 +24,26 @@
   <noscript>Please enable JavaScript to continue using this application.</noscript>
   <script>
 document.addEventListener('keydown', function(event) {
-  const focusable = Array.from(document.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])'));
-  const focused = document.activeElement;
-  let index = focusable.indexOf(focused);
+  event.preventDefault(); // Prevent default scrolling/browser actions
+  const focusable = Array.from(document.querySelectorAll('a, button, input, .card, [tabindex]:not([tabindex="-1"])')); // All focusable elements
+  let currentIndex = focusable.indexOf(document.activeElement);
 
   switch (event.key) {
     case 'ArrowUp':
-      // Move to previous row/item
-      while (index > 0) {
-        index--;
-        if (focusable[index].offsetParent !== null) {  // Visible?
-          focusable[index].focus();
-          break;
-        }
-      }
-      event.preventDefault();
+      moveFocus(currentIndex, -1, focusable); // Move up (previous)
       break;
     case 'ArrowDown':
-      // Move to next
-      while (index < focusable.length - 1) {
-        index++;
-        if (focusable[index].offsetParent !== null) {
-          focusable[index].focus();
-          break;
-        }
-      }
-      event.preventDefault();
+      moveFocus(currentIndex, 1, focusable); // Move down (next)
       break;
     case 'ArrowLeft':
     case 'ArrowRight':
-      // Handle horizontal scrolling in rows
-      const row = focused.closest('.row');  // Assuming .row class on content rows
-      if (row) row.scrollBy(event.key === 'ArrowLeft' ? -150 : 150, 0);  // Scroll thumbnails
-      event.preventDefault();
+      const row = document.activeElement.closest('.row'); // Assuming .row for content rows
+      if (row) {
+        row.scrollBy(event.key === 'ArrowLeft' ? -200 : 200, 0); // Horizontal scroll by ~thumbnail width
+      }
       break;
     case 'Enter':
-      if (focused) focused.click();
+      if (document.activeElement) document.activeElement.click();
       break;
     case 'Backspace':
     case 'Escape':
@@ -68,7 +52,19 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-// Focus styles toggle for keyboard/remote
+function moveFocus(currentIndex, direction, focusable) {
+  let newIndex = currentIndex + direction;
+  while (newIndex >= 0 && newIndex < focusable.length) {
+    if (focusable[newIndex].offsetParent !== null) { // Visible element
+      focusable[newIndex].focus();
+      focusable[newIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' }); // Scroll into view
+      break;
+    }
+    newIndex += direction;
+  }
+}
+
+// Enable keyboard focus styles
 document.addEventListener('keydown', () => document.body.classList.add('using-keyboard'));
 document.addEventListener('mousedown', () => document.body.classList.remove('using-keyboard'));
 </script>
