@@ -18,7 +18,6 @@ export class AppComponent implements AfterViewInit {
   @HostListener('document:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     console.log('KEY PRESSED:', event.key);
-    alert('Pressed: ' + event.key); // for testing on TV
 
     const focusable = Array.from(
       document.querySelectorAll('a, button, input, .card, [tabindex]:not([tabindex="-1"])')
