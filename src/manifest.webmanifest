@@ -61,7 +61,7 @@
   ],
   "screenshots": [  
     {
-      "src": "./assets/icons/Screenshot-Detaisl.png",  
+      "src": "./assets/icons/Screenshot-Details.png",  
       "sizes": "1280x1080",
       "type": "image/png",
       "form_factor": "wide",  
