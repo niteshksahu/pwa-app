@@ -1,5 +1,5 @@
 import { Component, HostListener, AfterViewInit } from '@angular/core';
-import { fakeContent, ContentItem } from './data';  // Make sure data.ts exists
+import { fakeContent, ContentItem } from './data';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +14,25 @@ export class AppComponent implements AfterViewInit {
     return fakeContent.filter(item => item.category === category);
   }
 
-  // ⬇️ D-Pad navigation support
+  // ✅ single listener for D-pad + debug
   @HostListener('document:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
+    console.log('KEY PRESSED:', event.key);
+    alert('Pressed: ' + event.key); // for testing on TV
+
     const focusable = Array.from(
       document.querySelectorAll('a, button, input, .card, [tabindex]:not([tabindex="-1"])')
     ) as HTMLElement[];
 
     if (!focusable.length) return;
+
     const current = document.activeElement as HTMLElement;
     const currentIndex = focusable.indexOf(current);
     let nextIndex = currentIndex;
 
     switch (event.key) {
       case 'ArrowUp':
-        nextIndex = currentIndex - 5; // adjust depending on number of items per row
+        nextIndex = currentIndex - 5; // adjust per your layout
         break;
       case 'ArrowDown':
         nextIndex = currentIndex + 5;
@@ -50,10 +54,7 @@ export class AppComponent implements AfterViewInit {
         return;
     }
 
-    // Clamp focus index
     nextIndex = Math.max(0, Math.min(nextIndex, focusable.length - 1));
-
-    // Move focus to new element
     const nextEl = focusable[nextIndex];
     if (nextEl) {
       nextEl.focus();
@@ -62,7 +63,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Focus the first focusable element once the UI has rendered
+    // give initial focus after render
     setTimeout(() => {
       const first = document.querySelector('[tabindex]') as HTMLElement;
       if (first) first.focus();
