@@ -61,14 +61,14 @@
   ],
   "screenshots": [  
     {
-      "src": "/assets/Screenshot.png",  
+      "src": "/assets/icons/Screenshot.png",  
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",  
       "label": "Home screen with content rows"
     },
     {
-      "src": "/assets/Screenshot-Details.png",
+      "src": "/assets/icons/Screenshot-Details.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
