@@ -20,3 +20,10 @@ body.using-keyboard :focus {
   body { font-size: 1.2em; }
   .hero { height: 60vh; }
 }
+
+.card:focus, .play-button:focus {
+  outline: 3px solid #e50914;
+  transform: scale(1.05);
+  transition: transform 0.2s ease, outline 0.2s ease;
+  z-index: 2;
+}

@@ -13,3 +13,11 @@ body.using-keyboard :focus {
 @media (min-width: 1920px) { /* TV screens */
   * { font-size: 1.5rem; padding: 20px; }
 }
+
+.card:focus,
+.play-button:focus {
+  outline: 3px solid #e50914;
+  transform: scale(1.05);
+  transition: transform 0.2s ease, outline 0.2s ease;
+  z-index: 2;
+}
