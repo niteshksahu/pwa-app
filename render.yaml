@@ -1,0 +1,11 @@
+
+services:
+  - type: web
+    name: pwa-toqqer
+    env: static
+    buildCommand: ng build --prod
+    staticPublishPath: dist/my-tv-pwa
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
